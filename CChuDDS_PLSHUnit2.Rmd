@@ -1,0 +1,117 @@
+---
+title: "CChu Live Session 2"
+author: "Claire Chu"
+date: "May 18, 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Question 1: Basic Math
+
+*Calculate the log of a positive number*
+
+```{r logPosNum}
+log(3)
+```
+
+*What is the default base of the log function? Calculate the log of your previous number with a different log*
+
+```{r logPosNumDiffLog}
+? log()
+log2(3)
+```
+
+log(3) with base 2 = 1.584963
+Using "? log()" we can see that the base log is Natural Log
+
+*Calculate the log of a negative number*
+
+```{r logNegNum}
+log(-1)
+```
+
+We know that this is true because you cannot take the log of a negative number!
+
+*Calculate the square-root of a positive number*
+
+```{r sqrtPos}
+sqrt(64)
+```
+
+## Question 2: Random Number Generation
+
+*Create a vector of 15 standard normal random variables.*
+
+```{r 15stanNorm}
+sample.vector <- rnorm(15, , )
+sample.vector
+```
+
+*Calculate the Mean and Standard Deviation*
+
+```{r evalSampleVec}
+mean(sample.vector)
+sd(sample.vector)
+```
+
+*change the mean to 10 and the SD to 2 and recalculate vector, as well as its new mean and standard deviation*
+
+```{r normSampleVec}
+norm.sample.vector <- rnorm(15, mean=10, sd=2)
+norm.sample.vector
+mean(norm.sample.vector)
+sd(norm.sample.vector)
+```
+
+*Why are the means and SD not exactly the same as the means and SDs specified in the function?*
+
+i believe that while, we can specify what the mean and SD are in the original vector creation parameters, since we are rounding numbers off, it will affect the actual mean and standard deviation.
+
+## Question 3: Vector Operations
+
+*The weights of 6 individuals in kg are 60, 72, 57, 90, 95, 72
+Their heights (in m) are 1.80, 1.85, 1.72, 1.90, 1.74, 1.91
+Enter these vectors into R*
+
+```{r bodyMetrics}
+weights <- c(60, 72, 57, 90, 95, 72)
+heights <- c(1.8, 1.85, 1.72, 1.9, 1.74, 1.91)
+```
+
+*Create a scatterplot*
+
+```{r bodyMetricScatter}
+plot(weights, heights)
+```
+
+the interpretation is interesting in that you would assume that the taller you are, the more you would weigh, but this is not the case. It is also interesting to note that this information is in KG and M.
+
+*Calculate the BMI*
+
+```{r BMI}
+#BMI = weight in kg divided by the square of the height in m
+bmi <- (weights/heights)
+bmi
+```
+
+*Calculate the mean for the weight*
+
+```{r meanWeight}
+mean(weights)
+```
+
+*Subtract the mean from each value of weight*
+```{r meanDistWeight}
+distance.mean <- (74.33333-weights)
+distance.mean
+```
+
+*Sum the results*
+```{r sumMeanDistWeight}
+sum(distance.mean)
+```
+
+This is why we need to square the deviations from the mean to calculate the standard deviation!
