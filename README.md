@@ -1,3 +1,2 @@
-# testrepoDS
-Test repository created for DS program Unit 3 Doing Data Science
-Created on May 25, 2016
+# stat6306introdatascience
+Files and projects for Stat 6306 Introduction to Data Science
