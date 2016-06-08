@@ -1,0 +1,217 @@
+---
+title: "MSDS 6304 Wednesday 6:30PM : Week 4 Homework"
+author: "Claire Chu"
+date: "May 30, 2016"
+output:
+  html_document:
+    keep_md: yes
+---
+<br>
+<br>
+<strong><u>Assignment: Write bootstrap code to illustrate the central limit theorem in R markdown and push the result to GitHub. Use a normal distribution with two different sample sizes and an exponential distribution with two different sample sizes. Please also comment on the code and explain the results. 
+</u></strong><br>
+<br>
+Based on the assignment, I will show the Central Limit Theorem at work through the following steps. 
+<br>
+step 1: Generate Normal Distribution & Stats
+step 2: Bootstrap code with a sampling size of 50 & Stats
+step 3: Bootstrap code with a sampling size of 100 & Stats
+step 4: Generate Exponential Distribution & Stats
+step 5: Bootstrap code with a sampling size of 50 & Stats
+step 6: Bootstrap code with a sampling size of 100 & Stats
+step 7: Conclusion
+<br>
+
+------------
+<br>
+<strong>Step 1: Generate normal distribution and take note of the Mean (meannorm) and the Standard Deviation (sdnorm) </strong>
+<br>
+generate normal distribution
+```{r}
+normalD <- c(rnorm(5, 2))
+normalD
+```
+<br>
+generate histogram of the normal distribution
+```{r}
+hist(normalD)
+```
+<br>
+generate mean of normal distribution
+```{r}
+meannorm <- c(mean(normalD))
+meannorm
+```
+<br>
+generate the standard deviation of normal distribution
+```{r}
+sdnorm <- c(sd(normalD))
+sdnorm
+```
+<br>
+<strong>Step 2: Generate boostrap code for the normal distribution with a sample size of 50 and take note of the Mean, Standard Deviation, and Standard Error</strong>
+<br>
+generate bootstrap code to get 50 sample means of the normal distribution (normalD) generated above
+```{r}
+rfifty <- 50
+bootmeanfif <- numeric(rfifty)
+
+for (i in 1:rfifty) {
+  bootsamplefif <- sample(normalD, size=length(normalD), replace=TRUE)
+  bootmeanfif[i] <- mean(bootsamplefif)}
+bootmeanfif
+```
+<br>
+print histogram to show the distribution of bootstrap sample means
+```{r}
+hist(bootmeanfif)
+```
+<br>
+get the mean value of the 50 bootstrap samples
+```{r}
+mean(bootmeanfif)
+```
+<br>
+get the standard deviation of the 50 bootstrap samples
+```{r}
+sd(bootmeanfif)
+```
+<br>
+get the standard error of the 50 bootstrap samples
+```{r}
+sd(bootmeanfif)/sqrt(50)
+```
+<br>
+<strong>Step 3: Generate boostrap code for the normal distribution with a sample size of 100 and take note of the Mean, Standard Deviation, and Standard Error</strong>
+<br>
+generate bootstrap code to get 100 sample means of the normal distribution (normalD) generated above
+```{r}
+rhund <- 100
+bootmeanhund <- numeric(rhund)
+
+for (i in 1:rhund) {
+  bootsamplehund <- sample(normalD, size=length(normalD), replace=TRUE)
+  bootmeanhund[i] <- mean(bootsamplehund)}
+bootmeanhund
+```
+<br>
+print histogram to show the distribution of bootstrap sample means
+```{r}
+hist(bootmeanhund)
+```
+<br>
+get the mean value of the 100 bootstrap samples
+```{r}
+mean(bootmeanhund)
+```
+<br>
+get the standard deviation of the 100 bootstrap samples
+```{r}
+sd(bootmeanhund)
+```
+<br>
+get the standard error of the 100 bootstrap samples
+```{r}
+sd(bootmeanhund)/sqrt(100)
+```
+<br>
+<strong>Step 4: Generate an Exponential function and take note of its mean (meanexp) and standard deviation (sdexp).</strong> 
+<br>
+
+```{r}
+expD <- c(rexp(5))
+expD
+```
+<br>
+generate a histogram of the exponential distribution
+```{r}
+hist(expD)
+```
+<br>
+generate the mean of the exponential distribution
+```{r}
+meanexp <- c(mean(expD))
+meanexp
+```
+<br>
+generate the standard deviation of the exponential distribution
+```{r}
+sdexp <- c(sd(expD))
+sdexp
+```
+<br>
+<strong>Step 5: Generate boostrap code for the exponential distribution with a sample size of 50 and take note of the Mean, Standard Deviation, and Standard Error</strong>
+<br>
+generate bootstrap code to get 50 sample means of the exponential distribution (expD) generated above  
+```{r}
+rexfifty <- 50
+bootmeanfifexp <- numeric(rexfifty)
+
+for (i in 1:rexfifty) {
+  bootsamplefifexp <- sample(expD, size=length(expD), replace=TRUE)
+  bootmeanfifexp[i] <- mean(bootsamplefifexp)}
+bootmeanfifexp
+```
+<br>
+print histogram to show the distribution of bootstrap sample means
+```{r}
+hist(bootmeanfifexp)
+```
+<br>
+get the mean value of the 50 bootstrap samples
+```{r}
+mean(bootmeanfifexp)
+```
+<br>
+get the standard deviation of the 50 bootstrap samples
+```{r}
+sd(bootmeanfifexp)
+```
+<br>
+get the standard error of the 50 bootstrap samples
+```{r}
+sd(bootmeanfifexp)/sqrt(50)
+```
+<br>
+<strong>Step 6: Generate boostrap code for the exponential distribution with a sample size of 100 and take note of the Mean, Standard Deviation, and Standard Error</strong>
+<br>
+generate bootstrap code to get 100 sample means of the exponential distribution (expD) generated above
+```{r}
+rexhund <- 100
+bootmeanhundexp <- numeric(rexhund)
+
+for (i in 1:rexhund) {
+  bootsamplehundexp <- sample(expD, size=length(expD), replace=TRUE)
+  bootmeanhundexp[i] <- mean(bootsamplehundexp)}
+bootmeanhundexp
+```
+<br>
+print histogram to show the distribution of bootstrap sample means
+```{r}
+hist(bootmeanhundexp)
+```
+<br>
+get the mean value of the 100 bootstrap samples
+```{r}
+mean(bootmeanhundexp)
+```
+<br>
+get the standard deviation of the 100 bootstrap samples
+```{r}
+sd(bootmeanhundexp)
+```
+<br>
+get the standard error of the 100 bootstrap samples
+```{r}
+sd(bootmeanhundexp)/sqrt(100)
+```
+<br>
+<strong>Step 7: Conclusion</strong>
+Based on our results, we can see that there are three components of the Central Limit Theorem being shown. 
+<br>
+A: We can see that the distribution of the bootstrap sample means will, as the sample size increases, approach a normal distribution. If we look at the histogram of normalD, the histogram of bootmeanfif, and the histogram of bootmeanhund, the histogram of bootmeanhund shows a trend towards normalization. The same can be said if we look at the histogram of bootmeanfifexp and the histogram of bootmeanfifhund.
+<br>
+B: We can see that as the sample size increases, the mean of the sample means gets closer to the population mean. This is why we are able to make many assumptions that the population mean is equal to the sample mean. 
+<br>
+C: We can see that as the sample size increases, the standard error of the mean decreases.
+
